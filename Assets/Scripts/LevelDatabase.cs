@@ -12,6 +12,8 @@ public class LevelDatabase
     public int NumberOfPieces;
     public int[] BoardEmptyTileTypeInfo;
     public PieceData[] pieceDatas;
+    [HideInInspector]
+    public bool tutorialCase = false;
 
     public class PieceData
     {
@@ -44,6 +46,7 @@ public class LevelDatabase
     public void ConvertStringToPieceInfo(string s)
     {
         int[] data = ConvertStringToIntArray(s);
+        CheckNewPieces(data);
         int d = 0;
         int pieceSize;
         pieceDatas = new PieceData[NumberOfPieces];
@@ -142,5 +145,19 @@ public class LevelDatabase
             board += "1";
         }
         return board;
+    }
+
+    void CheckNewPieces(int [] pieceinfo)//pieceinfo = stringinfo
+    {
+        int piecedata = PlayerPrefs.GetInt("Piecedata");//지금까지 타일
+        int i = 0;
+        for(;i< pieceinfo.Length;i++)
+        {
+            if (pieceinfo[i] > piecedata)//지금까지 나온 타일보다 크면 새로운 타일
+            {
+                tutorialCase = true;
+                PlayerPrefs.SetInt("Piecedata", pieceinfo[i]);
+            }
+        }
     }
 }

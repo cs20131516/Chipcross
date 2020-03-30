@@ -44,6 +44,8 @@ public class Event : MonoBehaviour
     //튜토리얼
     int firstTime = 1;
     public GameObject tutorialPanel;
+
+
     public GameObject Tile;
 
     /*void Awake()
@@ -532,8 +534,7 @@ public class Event : MonoBehaviour
     public void tutorialOff()
     {
         //Debug.Log(PlayerPrefs.GetInt("Piecedata"));
-        if(PlayerPrefs.GetInt("Piecedata")==5)
-        {
+
             tutorialPanel.SetActive(false);
             //변수 초기화
             InitializeVariables();
@@ -546,7 +547,7 @@ public class Event : MonoBehaviour
 
             //개발자 버튼용
             hohoho = 1;
-        }
+        
         else
         {
             tutorialPanel.SetActive(false);

@@ -531,6 +531,7 @@ public class Event : MonoBehaviour
     public void tutorialOff()
     {
         tutorialPanel.SetActive(false);
+
         //변수 초기화
         InitializeVariables();
 

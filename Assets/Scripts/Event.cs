@@ -45,7 +45,6 @@ public class Event : MonoBehaviour
     int firstTime = 1;
     public GameObject tutorialPanel;
 
-
     /*void Awake()
     {
         firstTime = PlayerPrefs.GetInt("tutorial");
@@ -428,7 +427,7 @@ public class Event : MonoBehaviour
         levelData.LoadLevelData(levelNum);//For check new tile;
         if(levelData.tutorialCase)
         {
-            Tile.GetComponent<Image>().sprite = Resources.Load<Sprite>("Arts/Theme1Tile" + PlayerPrefs.GetInt("Piecedata"));
+            //Tile.GetComponent<Image>().sprite = Resources.Load<Sprite>("Arts/Theme1Tile" + PlayerPrefs.GetInt("Piecedata"));
             tutorialPanel.SetActive(true);
         }
         else
@@ -531,6 +530,9 @@ public class Event : MonoBehaviour
 
     public void tutorialOff()
     {
+        tutorialPanel.SetActive(false);
+        //변수 초기화
+        InitializeVariables();
 
             tutorialPanel.SetActive(false);
             //변수 초기화

@@ -43,7 +43,7 @@ public class Event : MonoBehaviour
 
     //튜토리얼
     int firstTime = 1;
-    public GameObject Tutotiral;
+    public GameObject tutorialPanel;
     public GameObject Tile;
 
     /*void Awake()
@@ -58,7 +58,7 @@ public class Event : MonoBehaviour
             //PlayerPrefs.SetInt("tutorial", 0);
             PlayerPrefs.SetInt("Piecedata", 5);
             //PlayerPrefs.Save();
-            Tutotiral.SetActive(true);
+            tutorialPanel.SetActive(true);
         }
         else// load
         {
@@ -429,7 +429,7 @@ public class Event : MonoBehaviour
         if(levelData.tutorialCase)
         {
             Tile.GetComponent<Image>().sprite = Resources.Load<Sprite>("Arts/Theme1Tile" + PlayerPrefs.GetInt("Piecedata"));
-            Tutotiral.SetActive(true);
+            tutorialPanel.SetActive(true);
         }
         else
         {
@@ -534,7 +534,7 @@ public class Event : MonoBehaviour
         //Debug.Log(PlayerPrefs.GetInt("Piecedata"));
         if(PlayerPrefs.GetInt("Piecedata")==5)
         {
-            Tutotiral.SetActive(false);
+            tutorialPanel.SetActive(false);
             //변수 초기화
             InitializeVariables();
 
@@ -549,7 +549,7 @@ public class Event : MonoBehaviour
         }
         else
         {
-            Tutotiral.SetActive(false);
+            tutorialPanel.SetActive(false);
             LoadLevel();
             SavePiecePosition();
         }

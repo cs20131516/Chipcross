@@ -46,8 +46,6 @@ public class Event : MonoBehaviour
     public GameObject tutorialPanel;
 
 
-    public GameObject Tile;
-
     /*void Awake()
     {
         firstTime = PlayerPrefs.GetInt("tutorial");
@@ -533,7 +531,6 @@ public class Event : MonoBehaviour
 
     public void tutorialOff()
     {
-        //Debug.Log(PlayerPrefs.GetInt("Piecedata"));
 
             tutorialPanel.SetActive(false);
             //변수 초기화

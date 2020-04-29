@@ -82,7 +82,8 @@ public class LevelDatabase
                 BoyPos = 0;
                 GirlPos = 1;
                 NumberOfPieces = 3;
-                BoardEmptyTileTypeInfo = ConvertStringToIntArray(SetDefaultBoard());
+                //BoardEmptyTileTypeInfo = ConvertStringToIntArray(SetDefaultBoard());
+                BoardEmptyTileTypeInfo = GenerateBoard();
                 ConvertStringToPieceInfo("211421131241");
                 break;
             case 2:
@@ -213,5 +214,12 @@ public class LevelDatabase
                     break;
             }
         }
+    }
+
+    int[] GenerateBoard()
+    {
+        int height_diff = GirlPos - BoyPos;
+        int width_diff = BoardWidth;
+        return [1, 2, 3];
     }
 }

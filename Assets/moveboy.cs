@@ -132,7 +132,7 @@ public class moveboy : MonoBehaviour
     public void MoveDaBoi()
     {
         boiInitPos = transform.position;
-        fastForwardFactor = 4f;
+        fastForwardFactor = 3f;
         xdir = 1;
         ydir = 0;
         targetPosition = initTargetPosition;
@@ -340,6 +340,6 @@ public class moveboy : MonoBehaviour
     {
         speed = 0f;
         yield return new WaitForSeconds(0.3f);
-        speed = 5f;
+        speed = 3f;
     }
 }

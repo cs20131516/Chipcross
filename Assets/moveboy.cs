@@ -321,7 +321,7 @@ public class moveboy : MonoBehaviour
         }
         //Content of the file
         //Add some to text to it
-        File.AppendAllText(path, "\n" + content);
+        File.AppendAllText(path, "1,2,3,0,0," + content + "\n");
     }
     public void DifficultyText(float content)
     {

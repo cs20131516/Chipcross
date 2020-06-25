@@ -297,9 +297,9 @@ while Pin < 10000:
         passivemapmatrix[2, 0] = (passivemap / 10) % 10;
         passivemapmatrix[2, 1] = passivemap % 10;
 
-        if (passivemapmatrix[BoyPos, 0] == 2 || passivemapmatrix[GirlPos, 1] == 6)
+        if (passivemapmatrix[BoyPos, 0] == 1 || passivemapmatrix[BoyPos, 0] == 2 || passivemapmatrix[BoyPos, 0] == 3 || passivemapmatrix[GirlPos, 1] == 6)
             passivemapmatrix[BoyPos, 0] += 1;
-        if (passivemapmatrix[GirlPos, 1] == 2 || passivemapmatrix[GirlPos, 1] == 4 || passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[GirlPos, 1] == 6)
+        if (passivemapmatrix[BoyPos, 0] == 1 || passivemapmatrix[GirlPos, 1] == 2 || passivemapmatrix[GirlPos, 1] == 4 || passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[GirlPos, 1] == 6)
             passivemapmatrix[GirlPos, 1] += 1;
         /*if (passivemapmatrix[1, 0]== 4 || passivemapmatrix[1, 0] == 7)
             passivemapmatrix[1, 0] += 1;

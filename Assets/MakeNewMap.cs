@@ -29,7 +29,7 @@ public class MakeNewMap : MonoBehaviour
     string check;
     int Girlposcheck = 10;
     int Boyposcheck = 10;
-    int passivemap = 111111;
+    int passivemap = 111222;
     int passivemapcheck = 0;
     int[,] passivemapmatrix;
     [HideInInspector]
@@ -245,8 +245,8 @@ public class MakeNewMap : MonoBehaviour
         scaleSize = 1;
         passivemapmatrix = new int[BoardHeight, BoardWidth];
         //여자애 남자애 포지션
-        BoyPos = 0;
-        GirlPos = 0;
+        BoyPos = 1;
+        GirlPos = 1;
 
         //여기서 결정을 다 함.
         mapmatrix();
@@ -297,7 +297,7 @@ while Pin < 10000:
         passivemapmatrix[2, 0] = (passivemap / 10) % 10;
         passivemapmatrix[2, 1] = passivemap % 10;
 
-        if (passivemapmatrix[BoyPos, 0] == 1 || passivemapmatrix[BoyPos, 0] == 2 || passivemapmatrix[BoyPos, 0] == 3 || passivemapmatrix[GirlPos, 1] == 6)
+        if (passivemapmatrix[BoyPos, 0] == 1 || passivemapmatrix[BoyPos, 0] == 2 || passivemapmatrix[BoyPos, 0] == 3 || passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[GirlPos, 1] == 6)
             passivemapmatrix[BoyPos, 0] += 1;
         if (passivemapmatrix[BoyPos, 0] == 1 || passivemapmatrix[GirlPos, 1] == 2 || passivemapmatrix[GirlPos, 1] == 4 || passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[GirlPos, 1] == 6)
             passivemapmatrix[GirlPos, 1] += 1;
@@ -330,6 +330,11 @@ while Pin < 10000:
         //Debug.Log("00:" + passivemapmatrix[0, 0]);
 
         //1백대
+        if (passivemapmatrix[0, 0] == 3 && passivemapmatrix[1, 1] == 2)
+        {
+            passivemapmatrix[1, 1] += 1;
+        }
+
         if (passivemapmatrix[0, 1] == 0)
         {
             passivemapmatrix[0, 1] += 1;
@@ -362,6 +367,11 @@ while Pin < 10000:
         //Debug.Log("10:" + passivemapmatrix[1, 0]);
 
         //1대
+        if (passivemapmatrix[1, 0] == 3 && passivemapmatrix[1, 1] == 2)
+        {
+            passivemapmatrix[1, 1] += 1;
+        }
+
         if (passivemapmatrix[1, 1] == 0)
         {
             passivemapmatrix[1, 1] += 1;
@@ -388,6 +398,11 @@ while Pin < 10000:
         else if (passivemapmatrix[2, 0] == 9)
         {
             checkmatrixnum9++;
+        }
+
+        if (passivemapmatrix[2, 0] == 3 && passivemapmatrix[2, 1] == 2)
+        {
+            passivemapmatrix[2, 1] += 1;
         }
 
         if (passivemapmatrix[2, 1] == 0)

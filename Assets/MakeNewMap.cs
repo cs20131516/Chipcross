@@ -29,7 +29,7 @@ public class MakeNewMap : MonoBehaviour
     string check;
     int Girlposcheck = 10;
     int Boyposcheck = 10;
-    int passivemap = 879678;
+    int passivemap = 111222;
     int passivemapcheck = 0;
     int[,] passivemapmatrix;
     [HideInInspector]
@@ -245,8 +245,8 @@ public class MakeNewMap : MonoBehaviour
         scaleSize = 1;
         passivemapmatrix = new int[BoardHeight, BoardWidth];
         //여자애 남자애 포지션
-        BoyPos = 1;
-        GirlPos = 1;
+        BoyPos = 2;
+        GirlPos = 2;
 
         //여기서 결정을 다 함.
         mapmatrix();
@@ -297,9 +297,9 @@ while Pin < 10000:
         passivemapmatrix[2, 0] = (passivemap / 10) % 10;
         passivemapmatrix[2, 1] = passivemap % 10;
 
-        while(passivemapmatrix[BoyPos, 0] == 1 || passivemapmatrix[BoyPos, 0] == 2 || passivemapmatrix[BoyPos, 0] == 3) //|| passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[GirlPos, 1] == 6)
+        while(passivemapmatrix[BoyPos, 0] == 1 || passivemapmatrix[BoyPos, 0] == 2 || passivemapmatrix[BoyPos, 0] == 3 || passivemapmatrix[GirlPos, 1] == 4 || passivemapmatrix[GirlPos, 1] == 7) //|| passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[GirlPos, 1] == 6)
             passivemapmatrix[BoyPos, 0] += 1;
-        while(passivemapmatrix[GirlPos, 1] == 1 || passivemapmatrix[GirlPos, 1] == 2 || passivemapmatrix[GirlPos, 1] == 4 || passivemapmatrix[GirlPos, 1] == 5 || (passivemapmatrix[BoyPos, 0] == 8 && passivemapmatrix[GirlPos, 1] == 9) || (passivemapmatrix[BoyPos, 0] == 9 && passivemapmatrix[GirlPos, 1] == 8)) //|| passivemapmatrix[GirlPos, 1] == 6)
+        while(passivemapmatrix[GirlPos, 1] == 1 || passivemapmatrix[GirlPos, 1] == 2 || passivemapmatrix[GirlPos, 1] == 4 || passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[GirlPos, 1] == 7 || (passivemapmatrix[BoyPos, 0] == 8 && passivemapmatrix[GirlPos, 1] == 9) || (passivemapmatrix[BoyPos, 0] == 9 && passivemapmatrix[GirlPos, 1] == 8)) //|| passivemapmatrix[GirlPos, 1] == 6)
             passivemapmatrix[GirlPos, 1] += 1;
         /*if (passivemapmatrix[1, 0]== 4 || passivemapmatrix[1, 0] == 7)
             passivemapmatrix[1, 0] += 1;

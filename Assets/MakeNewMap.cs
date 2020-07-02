@@ -246,7 +246,7 @@ public class MakeNewMap : MonoBehaviour
         passivemapmatrix = new int[BoardHeight, BoardWidth];
         //여자애 남자애 포지션
         BoyPos = 0;
-        GirlPos = 0;
+        GirlPos = 1;
 
         //여기서 결정을 다 함.
         mapmatrix();
@@ -299,7 +299,7 @@ while Pin < 10000:
 
         while(passivemapmatrix[BoyPos, 0] == 1 || passivemapmatrix[BoyPos, 0] == 2 || passivemapmatrix[BoyPos, 0] == 3 || passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[GirlPos, 1] == 6)
             passivemapmatrix[BoyPos, 0] += 1;
-        while(passivemapmatrix[GirlPos, 1] == 1 || passivemapmatrix[GirlPos, 1] == 2 || passivemapmatrix[GirlPos, 1] == 4 || passivemapmatrix[GirlPos, 1] == 5 || (passivemapmatrix[BoyPos, 0] == 8 && passivemapmatrix[GirlPos, 1] == 9) || (passivemapmatrix[BoyPos, 0] == 9 && passivemapmatrix[GirlPos, 1] == 8) || passivemapmatrix[GirlPos, 1] == 6)
+        while(passivemapmatrix[GirlPos, 1] == 1 || passivemapmatrix[GirlPos, 1] == 2 || passivemapmatrix[GirlPos, 1] == 4 || passivemapmatrix[GirlPos, 1] == 5 || (passivemapmatrix[BoyPos, 0] == 8 && passivemapmatrix[GirlPos, 1] == 9) || (passivemapmatrix[BoyPos, 0] == 9 && passivemapmatrix[GirlPos, 1] == 8))// || passivemapmatrix[GirlPos, 1] == 6)
             passivemapmatrix[GirlPos, 1] += 1;
         /*if (passivemapmatrix[1, 0]== 4 || passivemapmatrix[1, 0] == 7)
             passivemapmatrix[1, 0] += 1;

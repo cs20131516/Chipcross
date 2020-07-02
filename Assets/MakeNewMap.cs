@@ -296,8 +296,8 @@ while Pin < 10000:
         passivemapmatrix[1, 1] = (passivemap / 100) % 10;
         passivemapmatrix[2, 0] = (passivemap / 10) % 10;
         passivemapmatrix[2, 1] = passivemap % 10;
-
-        while(passivemapmatrix[BoyPos, 0] == 1 || passivemapmatrix[BoyPos, 0] == 2 || passivemapmatrix[BoyPos, 0] == 3 || passivemapmatrix[GirlPos, 1] == 4 || passivemapmatrix[GirlPos, 1] == 7) //|| passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[GirlPos, 1] == 6)
+        //위쪽 while루프가 현재 문제임
+        while(passivemapmatrix[BoyPos, 0] == 1 || passivemapmatrix[BoyPos, 0] == 2 || passivemapmatrix[BoyPos, 0] == 3 || passivemapmatrix[BoyPos, 0] == 4 || passivemapmatrix[BoyPos, 0] == 7) //|| passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[BoyPos, 0] == 6)
             passivemapmatrix[BoyPos, 0] += 1;
         while(passivemapmatrix[GirlPos, 1] == 1 || passivemapmatrix[GirlPos, 1] == 2 || passivemapmatrix[GirlPos, 1] == 4 || passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[GirlPos, 1] == 7 || (passivemapmatrix[BoyPos, 0] == 8 && passivemapmatrix[GirlPos, 1] == 9) || (passivemapmatrix[BoyPos, 0] == 9 && passivemapmatrix[GirlPos, 1] == 8)) //|| passivemapmatrix[GirlPos, 1] == 6)
             passivemapmatrix[GirlPos, 1] += 1;

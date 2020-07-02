@@ -29,7 +29,7 @@ public class MakeNewMap : MonoBehaviour
     string check;
     int Girlposcheck = 10;
     int Boyposcheck = 10;
-    int passivemap = 124337;
+    int passivemap = 879678;
     int passivemapcheck = 0;
     int[,] passivemapmatrix;
     [HideInInspector]

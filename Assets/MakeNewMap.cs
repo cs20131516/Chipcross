@@ -297,10 +297,34 @@ while Pin < 10000:
         passivemapmatrix[2, 0] = (passivemap / 10) % 10;
         passivemapmatrix[2, 1] = passivemap % 10;
         //위쪽 while루프가 현재 문제임
-        while(passivemapmatrix[BoyPos, 0] == 1 || passivemapmatrix[BoyPos, 0] == 2 || passivemapmatrix[BoyPos, 0] == 3 || passivemapmatrix[BoyPos, 0] == 4 || passivemapmatrix[BoyPos, 0] == 7) //|| passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[BoyPos, 0] == 6)
-            passivemapmatrix[BoyPos, 0] += 1;
-        while(passivemapmatrix[GirlPos, 1] == 1 || passivemapmatrix[GirlPos, 1] == 2 || passivemapmatrix[GirlPos, 1] == 4 || passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[GirlPos, 1] == 7 || (passivemapmatrix[BoyPos, 0] == 8 && passivemapmatrix[GirlPos, 1] == 9) || (passivemapmatrix[BoyPos, 0] == 9 && passivemapmatrix[GirlPos, 1] == 8)) //|| passivemapmatrix[GirlPos, 1] == 6)
-            passivemapmatrix[GirlPos, 1] += 1;
+        while (passivemapmatrix[GirlPos, 1] <= 2 || passivemapmatrix[GirlPos, 1] == 4 || passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[GirlPos, 1] == 7) //|| passivemapmatrix[GirlPos, 1] == 6)
+        {
+            if (passivemapmatrix[GirlPos, 1] >= 9)
+            {
+                passivemapmatrix[GirlPos, 1] = 3;
+                passivemapmatrix[GirlPos, 0] += 1;
+            }
+            else
+            {
+                passivemapmatrix[GirlPos, 1] += 1;
+            }
+            //Debug.Log("GirlPos : " + passivemapmatrix[GirlPos, 1]);
+        }
+
+
+        while (passivemapmatrix[BoyPos, 0] <= 2 || passivemapmatrix[BoyPos, 0] == 3 || passivemapmatrix[BoyPos, 0] == 4 || passivemapmatrix[BoyPos, 0] == 7 || (passivemapmatrix[BoyPos, 0] == 8 && passivemapmatrix[GirlPos, 1] == 9) || (passivemapmatrix[BoyPos, 0] == 9 && passivemapmatrix[GirlPos, 1] == 8)) //|| passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[BoyPos, 0] == 6)
+        {
+            if (passivemapmatrix[BoyPos, 0] >= 9)
+            {
+                passivemapmatrix[BoyPos, 0] = 5;
+                passivemapmatrix[BoyPos - 1, 1] += 1;
+            }
+            else
+            {
+                passivemapmatrix[BoyPos, 0] += 1;
+            }
+            //Debug.Log("BoyPos : " + passivemapmatrix[BoyPos, 0]);
+        }
         /*if (passivemapmatrix[1, 0]== 4 || passivemapmatrix[1, 0] == 7)
             passivemapmatrix[1, 0] += 1;
         if (passivemapmatrix[1, 1] == 4 || passivemapmatrix[1, 1] == 7)
@@ -330,9 +354,9 @@ while Pin < 10000:
         //Debug.Log("00:" + passivemapmatrix[0, 0]);
 
         //1백대
-        if (passivemapmatrix[0, 0] == 3 && passivemapmatrix[1, 1] == 2)
+        if (passivemapmatrix[0, 0] == 3 && passivemapmatrix[0, 1] == 2)
         {
-            passivemapmatrix[1, 1] += 1;
+            passivemapmatrix[0, 1] += 1;
         }
 
         if (passivemapmatrix[0, 1] == 0)
@@ -423,12 +447,9 @@ while Pin < 10000:
         //Debug.Log("9:" + checkmatrixnum9);
         if ((checkmatrixnum8 == 0 && checkmatrixnum9 == 0) || (checkmatrixnum8 == 1 && checkmatrixnum9==1))
         {
-            //Debug.Log("ok");
-        }
-        else if(checkmatrixnum8 == 1 && checkmatrixnum9 == 0)
-        {
-            passivemap++;
-            mapmatrix();
+            /*Debug.Log("ok");
+            Debug.Log(checkmatrixnum8);
+            Debug.Log(checkmatrixnum9);*/
         }
         else
         {

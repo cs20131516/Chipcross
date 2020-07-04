@@ -245,8 +245,8 @@ public class MakeNewMap : MonoBehaviour
         scaleSize = 1;
         passivemapmatrix = new int[BoardHeight, BoardWidth];
         //여자애 남자애 포지션
-        BoyPos = 2;
-        GirlPos = 2;
+        BoyPos = 0;
+        GirlPos = 1;
 
         //여기서 결정을 다 함.
         mapmatrix();
@@ -296,7 +296,8 @@ while Pin < 10000:
         passivemapmatrix[1, 1] = (passivemap / 100) % 10;
         passivemapmatrix[2, 0] = (passivemap / 10) % 10;
         passivemapmatrix[2, 1] = passivemap % 10;
-        //위쪽 while루프가 현재 문제임
+        //위쪽 while루프가 현재 문제임 
+        //더 위쪽이 아래에 와야되며 8,9도 체크할때는 더 위에서 해서야된다
         while (passivemapmatrix[GirlPos, 1] <= 2 || passivemapmatrix[GirlPos, 1] == 4 || passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[GirlPos, 1] == 7) //|| passivemapmatrix[GirlPos, 1] == 6)
         {
             if (passivemapmatrix[GirlPos, 1] >= 9)

@@ -246,7 +246,7 @@ public class MakeNewMap : MonoBehaviour
         passivemapmatrix = new int[BoardHeight, BoardWidth];
         //여자애 남자애 포지션
         BoyPos = 0;
-        GirlPos = 1;
+        GirlPos = 2;
 
         //여기서 결정을 다 함.
         mapmatrix();
@@ -318,7 +318,7 @@ while Pin < 10000:
             if (passivemapmatrix[BoyPos, 0] >= 9)
             {
                 passivemapmatrix[BoyPos, 0] = 4;
-                passivemapmatrix[BoyPos - 1, 1] += 1;
+                //passivemapmatrix[BoyPos - 1, 1] += 1; 0이라서 일단 없애놔도 된다
             }
             else
             {

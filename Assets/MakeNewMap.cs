@@ -318,7 +318,7 @@ while Pin < 10000:
             if (passivemapmatrix[BoyPos, 0] >= 9)
             {
                 passivemapmatrix[BoyPos, 0] = 4;
-                //passivemapmatrix[BoyPos - 1, 1] += 1; 맨앞자리니까
+                passivemapmatrix[BoyPos - 1, 1] += 1; //맨앞자리니까
             }
             else
             {

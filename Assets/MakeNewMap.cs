@@ -29,7 +29,7 @@ public class MakeNewMap : MonoBehaviour
     string check;
     int Girlposcheck = 10;
     int Boyposcheck = 10;
-    int passivemap = 111222;
+    int passivemap = 811111;
     int passivemapcheck = 0;
     int[,] passivemapmatrix;
     [HideInInspector]
@@ -246,7 +246,7 @@ public class MakeNewMap : MonoBehaviour
         passivemapmatrix = new int[BoardHeight, BoardWidth];
         //여자애 남자애 포지션
         BoyPos = 1;
-        GirlPos = 2;
+        GirlPos = 0;
 
         //여기서 결정을 다 함.
         mapmatrix();
@@ -296,9 +296,24 @@ while Pin < 10000:
         passivemapmatrix[1, 1] = (passivemap / 100) % 10;
         passivemapmatrix[2, 0] = (passivemap / 10) % 10;
         passivemapmatrix[2, 1] = passivemap % 10;
-        //위쪽 while루프가 현재 문제임 
+        //위쪽 while루프가 현재 문제임
+        // 1 0
+        while (passivemapmatrix[BoyPos, 0] <= 2 || passivemapmatrix[BoyPos, 0] == 3 ) //|| passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[BoyPos, 0] == 6)
+        {
+            if (passivemapmatrix[BoyPos, 0] >= 9)
+            {
+                passivemapmatrix[BoyPos, 0] = 4;
+                passivemapmatrix[BoyPos - 1, 1] += 1; //0이라서 일단 없애놔도 된다
+            }
+            else
+            {
+                passivemapmatrix[BoyPos, 0] += 1;
+            }
+            //Debug.Log("BoyPos : " + passivemapmatrix[BoyPos, 0]);
+        }
+
         //더 위쪽이 아래에 와야되며 8,9도 체크할때는 더 위에서 해서야된다
-        while (passivemapmatrix[GirlPos, 1] <= 2 || passivemapmatrix[GirlPos, 1] == 4 || passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[GirlPos, 1] == 7) //|| passivemapmatrix[GirlPos, 1] == 6)
+        while (passivemapmatrix[GirlPos, 1] <= 2 || passivemapmatrix[GirlPos, 1] == 4 || passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[GirlPos, 1] == 6 || (passivemapmatrix[BoyPos, 0] == 8 && passivemapmatrix[GirlPos, 1] == 9) || (passivemapmatrix[BoyPos, 0] == 9 && passivemapmatrix[GirlPos, 1] == 8)) //|| passivemapmatrix[GirlPos, 1] == 6)
         {
             if (passivemapmatrix[GirlPos, 1] >= 9)
             {
@@ -312,20 +327,6 @@ while Pin < 10000:
             //Debug.Log("GirlPos : " + passivemapmatrix[GirlPos, 1]);
         }
 
-
-        while (passivemapmatrix[BoyPos, 0] <= 2 || passivemapmatrix[BoyPos, 0] == 3 || (passivemapmatrix[BoyPos, 0] == 8 && passivemapmatrix[GirlPos, 1] == 9) || (passivemapmatrix[BoyPos, 0] == 9 && passivemapmatrix[GirlPos, 1] == 8)) //|| passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[BoyPos, 0] == 6)
-        {
-            if (passivemapmatrix[BoyPos, 0] >= 9)
-            {
-                passivemapmatrix[BoyPos, 0] = 4;
-                passivemapmatrix[BoyPos - 1, 1] += 1; //0이라서 일단 없애놔도 된다
-            }
-            else
-            {
-                passivemapmatrix[BoyPos, 0] += 1;
-            }
-            //Debug.Log("BoyPos : " + passivemapmatrix[BoyPos, 0]);
-        }
         /*if (passivemapmatrix[1, 0]== 4 || passivemapmatrix[1, 0] == 7)
             passivemapmatrix[1, 0] += 1;
         if (passivemapmatrix[1, 1] == 4 || passivemapmatrix[1, 1] == 7)

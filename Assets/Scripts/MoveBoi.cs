@@ -135,8 +135,8 @@ public class MoveBoi : MonoBehaviour
     {
         boiInitPos = transform.position;
         fastForwardFactor = 1f;
-        xdir = 1;
-        ydir = 0;
+        xdir = 0;
+        ydir = 1;
         targetPosition = initTargetPosition;
         GetComponent<BoxCollider2D>().enabled = true;
         isMoving = true;

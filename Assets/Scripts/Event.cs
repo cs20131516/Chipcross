@@ -53,6 +53,10 @@ public class Event : MonoBehaviour
     int firstTime = 2;
     public GameObject tutorialPanel;
     bool tutorialDo = true;
+
+    //세로용
+    public static int ScreenWidth = Screen.width;
+    public static int ScreenHeight = Screen.height;
     /*void Awake()
     {
         firstTime = PlayerPrefs.GetInt("tutorial");
@@ -60,6 +64,13 @@ public class Event : MonoBehaviour
 
     void Start()
     {
+        if(ScreenWidth == Screen.width && ScreenHeight == Screen.height)
+        {
+            ScreenHeight = Screen.height - (640 * 2);
+            ScreenWidth = Screen.width - (360 * 2);
+            Screen.SetResolution(ScreenWidth, ScreenHeight, true);
+        }
+
         PlayerPrefs.SetInt("tutorial",0);//확인중임 없애도 됨. 기본은 0놓고했었음
         PlayerPrefs.SetInt("Piecedata", 1);
             stageLoad();
@@ -216,15 +227,19 @@ public class Event : MonoBehaviour
         else
         {
             //Reset Position of BlockPieces
-            BlockPieces.transform.position = new Vector3(0, -3.75f, 0);
+            BlockPieces.transform.position = new Vector3(-4f, -7f, 0);
 
             //Add Scaling by scaleSize!
-            scaleFactor = 1 - 0.2f * (levelData.scaleSize - 1);
-            distanceBetweenTiles = 2 * scaleFactor;
+            scaleFactor = 0.5f - 0.5f * (levelData.scaleSize - 1);// 모두에대한 scalersize 초기값이 0.5니까 이것보다는 커야된다
+            distanceBetweenTiles = 0.5f * scaleFactor;
             emptyTileScale = 0.25f * scaleFactor;
-            pieceScale = 1 * scaleFactor;
+            pieceScale = 0.5f * scaleFactor;
+            /*Debug.Log("scaler : " + scaleFactor);
+            Debug.Log("distance : " +distanceBetweenTiles);
+            Debug.Log("empty : " + emptyTileScale);
+            Debug.Log("piece : " + pieceScale);*/
 
-            //Instantiate 'EmptyTile'
+            //Instantiate 'EmptyTile' - TileBoard에 해당하는것
             typeIndex = 0;
             for (int i = 0; i < levelData.BoardHeight; i++)
             {
@@ -271,7 +286,7 @@ public class Event : MonoBehaviour
             for (int i = 0; i < levelData.NumberOfPieces; i++)
             {
                 prefab = Resources.Load("Prefabs/Piece") as GameObject;
-                obj = Instantiate(prefab, new Vector3(Random.value < 0.5 ? Random.Range(-7.6f, -5.9f) : Random.Range(5.9f, 7.6f), Random.Range(0, 7.4f)), Quaternion.identity);
+                obj = Instantiate(prefab, new Vector3(Random.value < 0.5 ? Random.Range(1.6f, 2.2f) : Random.Range(6.4f, 10f), Random.Range(0, 9f)), Quaternion.identity);//z는 상관 없음
                 obj.transform.SetParent(BlockPieces, false);
                 obj.GetComponent<VariableProvider>().pieceNum = i;
 
@@ -285,7 +300,7 @@ public class Event : MonoBehaviour
                         if (levelData.pieceDatas[i].TileType[typeIndex] != 0)
                         {
                             prefab = Resources.Load("Prefabs/Tile" + levelData.pieceDatas[i].TileType[typeIndex].ToString()) as GameObject;
-                            obj2 = Instantiate(prefab, new Vector3(-pieceWidth + 1 + 2 * k, pieceHeight - 1 - 2 * j, 0), Quaternion.identity);
+                            obj2 = Instantiate(prefab, new Vector3(-pieceWidth + 1 + 2 * k, pieceHeight - 1 - 2 * j, 0), Quaternion.identity);//이부분이 또 연산에 들어가고
                             obj2.transform.SetParent(obj.transform, false);
                             obj2.GetComponent<SpriteRenderer>().sortingOrder = 75 + i;
                         }

@@ -29,7 +29,7 @@ public class MakeNewMap : MonoBehaviour
     string check;
     int Girlposcheck = 10;
     int Boyposcheck = 10;
-    int passivemap = 111111;
+    int passivemap = 317311111;
     int passivemapcheck = 0;
     int[,] passivemapmatrix;
     [HideInInspector]
@@ -241,11 +241,11 @@ public class MakeNewMap : MonoBehaviour
             passivemap++;
 
         BoardWidth = 3; // 2*2타일같이 여기서 수정함
-        BoardHeight = 2;
+        BoardHeight = 3;
         scaleSize = 1;
         passivemapmatrix = new int[BoardHeight, BoardWidth];
         //여자애 남자애 포지션
-        BoyPos = 1;
+        BoyPos = 0;
         GirlPos = 0;
 
         //여기서 결정을 다 함.
@@ -290,41 +290,43 @@ while Pin < 10000:
         }
         //3,2
         //111111
-        passivemapmatrix[0, 0] = passivemap / 100000;
-        passivemapmatrix[0, 1] = (passivemap / 10000) % 10;
-        passivemapmatrix[0, 2] = (passivemap / 1000) % 10;
-        passivemapmatrix[1, 0] = (passivemap / 100) % 10;
-        passivemapmatrix[1, 1] = (passivemap / 10) % 10;
-        passivemapmatrix[1, 2] = passivemap % 10;
+        passivemapmatrix[0, 0] = passivemap / 100000000;
+        passivemapmatrix[0, 1] = (passivemap / 10000000) % 10;
+        passivemapmatrix[0, 2] = (passivemap / 1000000) % 10;
+        passivemapmatrix[1, 0] = (passivemap / 100000) % 10;
+        passivemapmatrix[1, 1] = (passivemap / 10000) % 10;
+        passivemapmatrix[1, 2] = (passivemap / 1000) % 10;
+        passivemapmatrix[2, 0] = (passivemap / 100) % 10;
+        passivemapmatrix[2, 1] = (passivemap / 10) % 10;
+        passivemapmatrix[2, 2] = passivemap % 10;
         //위쪽 while루프가 현재 문제임 
         //더 위쪽이 아래에 와야되며 8,9도 체크할때는 더 위에서 해서야된다
-        while (passivemapmatrix[BoyPos, 0] <= 2 || passivemapmatrix[BoyPos, 0] == 4 || passivemapmatrix[BoyPos, 0] == 7 || (passivemapmatrix[BoyPos, 0] == 3 && passivemapmatrix[BoyPos, 1] == 3) ) // || passivemapmatrix[BoyPos, 0] == 5 || passivemapmatrix[BoyPos, 0] == 6 || passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[BoyPos, 0] == 6)
-        {
-            if (passivemapmatrix[BoyPos, 0] >= 9)
-            {
-                passivemapmatrix[BoyPos, 0] = 3;
-                passivemapmatrix[BoyPos - 1, 1] += 1; //맨앞자리니까
-            }
-            else
-            {
-                passivemapmatrix[BoyPos, 0] += 1;
-            }
-            //Debug.Log("BoyPos : " + passivemapmatrix[BoyPos, 0]);
-        }
-
-
-        while (passivemapmatrix[GirlPos, 2] <= 2 || passivemapmatrix[GirlPos, 2] == 4 || passivemapmatrix[GirlPos, 2] == 5 || passivemapmatrix[GirlPos, 2] == 7 || (passivemapmatrix[BoyPos, 0] == 8 && passivemapmatrix[GirlPos, 2] == 9) || (passivemapmatrix[BoyPos, 0] == 9 && passivemapmatrix[GirlPos, 2] == 8)) //|| passivemapmatrix[GirlPos, 1] == 6)
+        while (passivemapmatrix[GirlPos, 2] <= 2 || passivemapmatrix[GirlPos, 2] == 4 || passivemapmatrix[GirlPos, 2] == 5 || passivemapmatrix[GirlPos, 2] == 6) //|| passivemapmatrix[GirlPos, 1] == 6)
         {
             if (passivemapmatrix[GirlPos, 2] >= 9)
             {
                 passivemapmatrix[GirlPos, 2] = 3;
-                passivemapmatrix[GirlPos, 0] += 1;
+                passivemapmatrix[GirlPos, 1] += 1;
             }
             else
             {
                 passivemapmatrix[GirlPos, 2] += 1;
             }
             //Debug.Log("GirlPos : " + passivemapmatrix[GirlPos, 1]);
+        }
+
+        while (passivemapmatrix[BoyPos, 0] <= 2 || passivemapmatrix[BoyPos, 0] == 5 || passivemapmatrix[BoyPos, 0] == 6 || (passivemapmatrix[BoyPos, 0] == 8 && passivemapmatrix[GirlPos, 2] == 9) || (passivemapmatrix[BoyPos, 0] == 9 && passivemapmatrix[GirlPos, 2] == 8)) // || passivemapmatrix[BoyPos, 0] == 5 || passivemapmatrix[BoyPos, 0] == 6 || passivemapmatrix[GirlPos, 1] == 5 || passivemapmatrix[BoyPos, 0] == 6)
+        {
+            if (passivemapmatrix[BoyPos, 0] >= 9)
+            {
+                passivemapmatrix[BoyPos, 0] = 3;
+                //passivemapmatrix[BoyPos - 1, 1] += 1; //맨앞자리니까
+            }
+            else
+            {
+                passivemapmatrix[BoyPos, 0] += 1;
+            }
+            //Debug.Log("BoyPos : " + passivemapmatrix[BoyPos, 0]);
         }
 
         /*if (passivemapmatrix[1, 0]== 4 || passivemapmatrix[1, 0] == 7)
@@ -339,6 +341,22 @@ while Pin < 10000:
 
         int checkmatrixnum8 = 0;
         int checkmatrixnum9 = 0;
+
+        if(passivemapmatrix[BoyPos, 0] == 3 && passivemapmatrix[BoyPos, 1] == 2)
+        {
+            passivemapmatrix[BoyPos, 1] += 1;
+        }
+
+        if((passivemapmatrix[BoyPos, 0] == 3 && passivemapmatrix[BoyPos, 1] == 1 && passivemapmatrix[BoyPos, 2] == 3) || (passivemapmatrix[BoyPos, 0] == 3 && passivemapmatrix[BoyPos, 1] == 3 && passivemapmatrix[BoyPos, 2] == 3))
+        {
+            passivemapmatrix[BoyPos, 2] += 1;
+        }
+
+        if ( passivemapmatrix[BoyPos, 0] == 4 && passivemapmatrix[BoyPos + 1, 0] == 5 )
+        {
+            passivemapmatrix[BoyPos+1, 0] += 1;
+        }
+
         //1천대
         if (passivemapmatrix[0, 0] == 0)
         {
@@ -356,11 +374,6 @@ while Pin < 10000:
         //Debug.Log("00:" + passivemapmatrix[0, 0]);
 
         //1백대
-        if (passivemapmatrix[0, 0] == 3 && passivemapmatrix[0, 1] == 2)
-        {
-            passivemapmatrix[0, 1] += 1;
-        }
-
         if (passivemapmatrix[0, 1] == 0)
         {
             passivemapmatrix[0, 1] += 1;
@@ -434,6 +447,45 @@ while Pin < 10000:
             checkmatrixnum9++;
         }
 
+        if (passivemapmatrix[2, 0] == 0)
+        {
+            passivemapmatrix[2, 0] += 1;
+        }
+        else if (passivemapmatrix[2, 0] == 8)
+        {
+            checkmatrixnum8++;
+        }
+        else if (passivemapmatrix[2, 0] == 9)
+        {
+            checkmatrixnum9++;
+        }
+
+        if (passivemapmatrix[2, 1] == 0)
+        {
+            passivemapmatrix[2, 1] += 1;
+        }
+        else if (passivemapmatrix[2, 1] == 8)
+        {
+            checkmatrixnum8++;
+        }
+        else if (passivemapmatrix[2, 1] == 9)
+        {
+            checkmatrixnum9++;
+        }
+
+        if (passivemapmatrix[2, 2] == 0)
+        {
+            passivemapmatrix[2, 2] += 1;
+        }
+        else if (passivemapmatrix[2, 2] == 8)
+        {
+            checkmatrixnum8++;
+        }
+        else if (passivemapmatrix[2, 2] == 9)
+        {
+            checkmatrixnum9++;
+        }
+
         // 확인
         //Debug.Log("8:"+ checkmatrixnum8);
         //Debug.Log("9:" + checkmatrixnum9);
@@ -450,7 +502,7 @@ while Pin < 10000:
             mapmatrix();
         }
 
-        passivemap = passivemapmatrix[0, 0] * 100000 + passivemapmatrix[0, 1] * 10000 + passivemapmatrix[0, 2] * 1000 + passivemapmatrix[1, 0] * 100 + passivemapmatrix[1, 1] * 10 + passivemapmatrix[1, 2];
+        passivemap = passivemapmatrix[0, 0] * 100000000 + passivemapmatrix[0, 1] * 10000000 + passivemapmatrix[0, 2] * 1000000 + passivemapmatrix[1, 0] * 100000 + passivemapmatrix[1, 1] * 10000 + passivemapmatrix[1, 2]*1000 + passivemapmatrix[2, 0] * 100 + passivemapmatrix[2, 1] * 10 + passivemapmatrix[2, 2] * 1;
 
 
         //difficulty factor 다 확인해야될듯?

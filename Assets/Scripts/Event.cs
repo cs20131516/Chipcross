@@ -248,13 +248,13 @@ public class Event : MonoBehaviour
                     Boy.transform.position = obj.transform.position - new Vector3(distanceBetweenTiles, 0, 0);
                     Boy.GetComponent<MoveBoi>().initTargetPosition = obj.transform.position;
                     Boy.GetComponent<MoveBoi>().distanceBetweenTiles = distanceBetweenTiles;
-                    Boy.transform.localScale = new Vector3(emptyTileScale, emptyTileScale, 1);
+                    Boy.transform.localScale = new Vector3(0.1f, 0.1f, 1);//new Vector3(emptyTileScale, emptyTileScale, 1);이게 원본
                 }
 
                 if (i == levelData.GirlPos && j == levelData.BoardWidth - 1)
                 {
                     Girl.transform.position = obj.transform.position + new Vector3(distanceBetweenTiles, 0, 0);
-                    Girl.transform.localScale = new Vector3(emptyTileScale, emptyTileScale, 1);
+                    Girl.transform.localScale = new Vector3(0.1f, 0.1f, 1);//new Vector3(emptyTileScale, emptyTileScale, 1);이게 원본
                 }
                 typeIndex++;
             }

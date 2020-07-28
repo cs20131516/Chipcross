@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class LevelDatabase
 {
@@ -158,13 +162,31 @@ public class LevelDatabase
     //txt파일에서 불러와서 string으로 return
     public string ReadFileByFactor(float dfactor)
     {
-        string path = Application.dataPath + "/"+ dfactor + ".txt";
-        if (!File.Exists(path))
+        TextAsset sourcefile = Resources.Load<TextAsset>(dfactor.ToString());
+        StringReader sr = new StringReader(sourcefile.text);
+        //string path = Application.persistentDataPath + "/Assets/Resources/" + dfactor + ".txt";
+        //Debug.Log(Application.persistentDataPath);
+        int random = Random.Range(1, 10000);
+        #if UNITY_EDITOR
+        bool existFolder = AssetDatabase.IsValidFolder("Assets/-1.txt");
+        #endif
+        if (existFolder)
         {
             Debug.Log("error");
+            #if UNITY_EDITOR   
+            string guid = AssetDatabase.CreateFolder("Assets", "My Folder");
+            #endif
+            random = -1;
         }
-        int random = Random.Range(1, 10000);
-        string testdata = File.ReadLines(path).Skip(random).First();
+        else
+        {
+            random = Random.Range(1, 10000);
+        }
+        string testdata = "";
+        for (int i = 0; i < random; i++)
+        {
+            testdata = sr.ReadLine();
+        }
         Debug.Log("Read Line " + random);
         //Debug.Log(testdata);
         return testdata;
